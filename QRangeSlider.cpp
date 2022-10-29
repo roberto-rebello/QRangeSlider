@@ -143,6 +143,12 @@ void QRangeSlider::setStep(const unsigned int step)
     m_step = step;
 }
 
+void QRangeSlider::setRange(const unsigned int minimum, const unsigned int maximum)
+{
+    setMinimum(minimum);
+    setMaximum(maximum);
+}
+
 void QRangeSlider::paintEvent(QPaintEvent *event)
 {
     Q_UNUSED(event);

@@ -8,8 +8,6 @@ class QRangeSlider : public QWidget
 public:
     QRangeSlider(QWidget *parent = nullptr);
     ~QRangeSlider();
-
-private:
     unsigned int minimum() const;
     void setMinimum(const unsigned int minimum);
     unsigned int maximum() const;
@@ -20,6 +18,9 @@ private:
     void setHighValue(const unsigned int highValue);
     unsigned int step() const;
     void setStep(const unsigned int step);
+    void setRange(const unsigned int minimum, const unsigned int maximum);
+
+private:
     void paintEvent(QPaintEvent *event);
     QSize sizeHint() const;
     QSize minimumSizeHint() const;
