@@ -17,6 +17,6 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent)
     QSlider *slider = new QSlider(Qt::Orientation::Horizontal);
     layout->addWidget(slider);
 
-    QRangeSlider *rangeSlider = new QRangeSlider();
-    layout->addWidget(rangeSlider);
+    QRangeSlider *qRangeSlider = new QRangeSlider();
+    layout->addWidget(qRangeSlider);
 }
