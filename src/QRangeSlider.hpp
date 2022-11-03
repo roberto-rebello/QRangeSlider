@@ -37,16 +37,7 @@ private:
     void mouseMoveEvent(QMouseEvent *e);
     void paintEvent(QPaintEvent *event);
 
-    /* Slider size in pixels */
-    unsigned int m_sliderHeight = 5;
-
-    /* Slider handle size in pixels */
-    unsigned int m_handleSize = 13;
-
-    /* Left and Right padding in pixels */
-    unsigned int m_padding = 1;
-
-    /* Minmum range value */
+    /* Minimum range value */
     unsigned int m_minimum = 0;
 
     /* Maximum range value */
@@ -61,5 +52,14 @@ private:
     /* Value of high handle */
     unsigned int m_highValue;
 
+    /* Value of the last mouse click */
     int m_lastMouseValue = -1;
+
+    /* Painter constants */
+    /* Slider height in pixels */
+    static constexpr unsigned int SLIDER_HEIGHT = 5;
+    /* Slider handle size in pixels */
+    static constexpr unsigned int HANDLE_SIZE = 13;
+    /* Left and Right padding in pixels */
+    static constexpr unsigned int PADDING = 1;
 };

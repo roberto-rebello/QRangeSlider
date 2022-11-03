@@ -153,17 +153,17 @@ void QRangeSlider::setRange(const unsigned int minimum, const unsigned int maxim
 
 QSize QRangeSlider::sizeHint() const
 {
-    return QSize(100 * m_handleSize + 2 * m_padding, 2 * m_handleSize + 2 * m_padding);
+    return QSize(100 * HANDLE_SIZE + 2 * PADDING, 2 * HANDLE_SIZE + 2 * PADDING);
 }
 
 QSize QRangeSlider::minimumSizeHint() const
 {
-    return QSize(2 * m_handleSize + 2 * m_padding, 2 * m_handleSize);
+    return QSize(2 * HANDLE_SIZE + 2 * PADDING, 2 * HANDLE_SIZE);
 }
 
 void QRangeSlider::mousePressEvent(QMouseEvent *e)
 {
-    if (e->position().y() >= (height() - m_sliderHeight - m_handleSize) / 2 && e->position().y() <= (height() - m_sliderHeight + m_handleSize) / 2) // Check if event was on slider
+    if (e->position().y() >= (height() - SLIDER_HEIGHT - HANDLE_SIZE) / 2 && e->position().y() <= (height() - SLIDER_HEIGHT + HANDLE_SIZE) / 2) // Check if event was on slider
     {
         float mouseX = e->position().x() < 0 ? 0 : e->position().x();
         unsigned int mouseValue = (mouseX / width()) * (m_maximum - m_minimum) + m_minimum;
@@ -219,37 +219,39 @@ void QRangeSlider::paintEvent(QPaintEvent *event)
     QPainter painter(this);
     painter.setRenderHint(QPainter::RenderHint::Antialiasing);
 
+    painter.fillRect(0, 0, width(), height(), Qt::GlobalColor::green); // Debug
+
     // Draw background
     painter.setPen(QPen(Qt::GlobalColor::darkGray, 0.8));
     painter.setBrush(QBrush(QColor(Qt::GlobalColor::lightGray)));
-    painter.drawRoundedRect(m_padding,
-                            (height() - m_sliderHeight) / 2,
-                            width() - 2 * m_padding,
-                            m_sliderHeight,
+    painter.drawRoundedRect(PADDING,
+                            (height() - SLIDER_HEIGHT) / 2,
+                            width() - 2 * PADDING,
+                            SLIDER_HEIGHT,
                             2,
                             2);
 
     // Draw range
     painter.setBrush(QBrush(QColor(0x1E, 0x90, 0xFF)));
-    painter.drawRect(m_padding + ((width() - 2 * m_padding) * (m_lowValue - m_minimum) / (m_maximum - m_minimum)),
-                     (height() - m_sliderHeight) / 2,
-                     (width() - 2 * m_padding) * (m_highValue - m_lowValue) / (m_maximum - m_minimum),
-                     m_sliderHeight);
+    painter.drawRect(PADDING + ((width() - 2 * PADDING) * (m_lowValue - m_minimum) / (m_maximum - m_minimum)),
+                     (height() - SLIDER_HEIGHT) / 2,
+                     (width() - 2 * PADDING) * (m_highValue - m_lowValue) / (m_maximum - m_minimum),
+                     SLIDER_HEIGHT);
 
     // Draw lower handle
     painter.setBrush(QBrush(QColor(Qt::GlobalColor::white)));
-    painter.drawRoundedRect(m_padding + ((width() - 2 * m_padding) * (m_lowValue - m_minimum) / (m_maximum - m_minimum)),
-                            (height() - m_handleSize) / 2,
-                            m_handleSize,
-                            m_handleSize,
+    painter.drawRoundedRect(PADDING + ((width() - 2 * PADDING) * (m_lowValue - m_minimum) / (m_maximum - m_minimum)),
+                            (height() - HANDLE_SIZE) / 2,
+                            HANDLE_SIZE,
+                            HANDLE_SIZE,
                             2,
                             2);
 
     // Draw higher handle
-    painter.drawRoundedRect(m_padding + ((width() - 2 * m_padding) * (m_highValue - m_minimum) / (m_maximum - m_minimum)) - m_handleSize,
-                            (height() - m_handleSize) / 2,
-                            m_handleSize,
-                            m_handleSize,
+    painter.drawRoundedRect(PADDING + ((width() - 2 * PADDING) * (m_highValue - m_minimum) / (m_maximum - m_minimum)) - HANDLE_SIZE,
+                            (height() - HANDLE_SIZE) / 2,
+                            HANDLE_SIZE,
+                            HANDLE_SIZE,
                             2,
                             2);
 
