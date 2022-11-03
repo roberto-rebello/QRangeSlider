@@ -153,7 +153,7 @@ void QRangeSlider::setRange(const unsigned int minimum, const unsigned int maxim
 
 QSize QRangeSlider::sizeHint() const
 {
-    return QSize(2 * m_handleSize + 2 * m_padding, m_handleSize + 2 * m_padding);
+    return QSize(100 * m_handleSize + 2 * m_padding, 2 * m_handleSize + 2 * m_padding);
 }
 
 QSize QRangeSlider::minimumSizeHint() const
