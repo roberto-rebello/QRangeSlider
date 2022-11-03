@@ -42,6 +42,7 @@ void QRangeSlider::setMinimum(const unsigned int minimum)
         }
 
         update();
+        emit(minimumChange(m_minimum));
         emit(rangeChange(m_minimum, m_maximum));
     }
 }
@@ -73,6 +74,7 @@ void QRangeSlider::setMaximum(const unsigned int maximum)
         }
 
         update();
+        emit(maximumChange(m_maximum));
         emit(rangeChange(m_minimum, m_maximum));
     }
 }

@@ -25,9 +25,11 @@ public slots:
     void setRange(const unsigned int minimum, const unsigned int maximum);
 
 signals:
-    void rangeChange(unsigned int minimum, unsigned int maximum);
+    void minimumChange(unsigned int minimum);
+    void maximumChange(unsigned int maximum);
     void lowValueChange(unsigned int lowValue);
     void highValueChange(unsigned int highValue);
+    void rangeChange(unsigned int minimum, unsigned int maximum);
 
 private:
     void mousePressEvent(QMouseEvent *e);
