@@ -38,7 +38,7 @@ private:
     void paintEvent(QPaintEvent *event);
 
     /* Slider size in pixels */
-    unsigned int m_sliderSize = 5;
+    unsigned int m_sliderHeight = 5;
 
     /* Slider handle size in pixels */
     unsigned int m_handleSize = 13;

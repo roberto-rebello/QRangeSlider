@@ -163,7 +163,7 @@ QSize QRangeSlider::minimumSizeHint() const
 
 void QRangeSlider::mousePressEvent(QMouseEvent *e)
 {
-    if (e->position().y() >= (height() - m_sliderSize) / 2 - m_handleSize && e->position().y() <= (height() - m_sliderSize) / 2 + m_handleSize) // Check if event was on slider
+    if (e->position().y() >= (height() - m_sliderHeight - m_handleSize) / 2 && e->position().y() <= (height() - m_sliderHeight + m_handleSize) / 2) // Check if event was on slider
     {
         float mouseX = e->position().x() < 0 ? 0 : e->position().x();
         unsigned int mouseValue = (mouseX / width()) * (m_maximum - m_minimum) + m_minimum;
@@ -223,18 +223,18 @@ void QRangeSlider::paintEvent(QPaintEvent *event)
     painter.setPen(QPen(Qt::GlobalColor::darkGray, 0.8));
     painter.setBrush(QBrush(QColor(Qt::GlobalColor::lightGray)));
     painter.drawRoundedRect(m_padding,
-                            (height() - m_sliderSize) / 2,
+                            (height() - m_sliderHeight) / 2,
                             width() - 2 * m_padding,
-                            m_sliderSize,
+                            m_sliderHeight,
                             2,
                             2);
 
     // Draw range
     painter.setBrush(QBrush(QColor(0x1E, 0x90, 0xFF)));
     painter.drawRect(m_padding + ((width() - 2 * m_padding) * (m_lowValue - m_minimum) / (m_maximum - m_minimum)),
-                     (height() - m_sliderSize) / 2,
+                     (height() - m_sliderHeight) / 2,
                      (width() - 2 * m_padding) * (m_highValue - m_lowValue) / (m_maximum - m_minimum),
-                     m_sliderSize);
+                     m_sliderHeight);
 
     // Draw lower handle
     painter.setBrush(QBrush(QColor(Qt::GlobalColor::white)));
