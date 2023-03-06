@@ -49,13 +49,13 @@ class MainWindow(QMainWindow):
         maximum.valueChanged.connect(qRangeSlider.setMaximum)
 
         # QRangeSlider update signals
-        qRangeSlider._minimumChange.connect(minimum.setValue)
-        qRangeSlider._lowValueChange.connect(lowValue.setValue)
-        qRangeSlider._highValueChange.connect(highValue.setValue)
-        qRangeSlider._maximumChange.connect(maximum.setValue)
+        qRangeSlider.minimumChange.connect(minimum.setValue)
+        qRangeSlider.lowValueChange.connect(lowValue.setValue)
+        qRangeSlider.highValueChange.connect(highValue.setValue)
+        qRangeSlider.maximumChange.connect(maximum.setValue)
 
-        qRangeSlider._rangeChange.connect(lowValue.setRange)
-        qRangeSlider._rangeChange.connect(highValue.setRange)
+        qRangeSlider.rangeChange.connect(lowValue.setRange)
+        qRangeSlider.rangeChange.connect(highValue.setRange)
 
         reset = QPushButton("Reset")
         layout.addWidget(reset)
