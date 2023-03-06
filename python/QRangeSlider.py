@@ -137,7 +137,7 @@ class QRangeSlider(QWidget):
         # Check if event was on slider
         if mouseEvent.pos().y() >= (self.height() - self.SLIDER_HEIGHT - self.HANDLE_SIZE) / 2 and mouseEvent.pos().y() <= (self.height() - self.SLIDER_HEIGHT + self.HANDLE_SIZE) / 2:
             mouseX = 0 if mouseEvent.pos().x() < 0 else mouseEvent.pos().x()
-            mouseValue = (mouseX / self.width()) * (self._maximum - self._minimum) + self._minimum
+            mouseValue = int((mouseX / self.width()) * (self._maximum - self._minimum) + self._minimum)
             self._lastMouseValue = mouseValue
 
     def mouseReleaseEvent(self, mouseEvent):
@@ -146,7 +146,7 @@ class QRangeSlider(QWidget):
     def mouseMoveEvent(self, mouseEvent):
         if self._lastMouseValue != -1:
             mouseX = 0 if mouseEvent.pos().x() < 0 else mouseEvent.pos().x()
-            mouseValue = (mouseX / self.width()) * (self._maximum - self._minimum) + self._minimum
+            mouseValue = int((mouseX / self.width()) * (self._maximum - self._minimum) + self._minimum)
 
             if self._lastMouseValue >= self._lowValue - 1 and self._lastMouseValue < self._lowValue + 1:
                 self.setLowValue(mouseValue)
