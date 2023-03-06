@@ -74,9 +74,9 @@ class QRangeSlider(QWidget):
                 self.setLowValue(self._minimum)
             elif self._maximum <= self._lowValue:
                 self.setHighValue(self._maximum)
-                self.setLowvalue(self._highValue -1)
+                self.setLowValue(self._highValue -1)
             elif self._maximum < self._highValue:
-                self.setHighvalue(self._maximum)
+                self.setHighValue(self._maximum)
 
             self.update()
             self._maximumChange.emit(self._maximum)
@@ -158,7 +158,7 @@ class QRangeSlider(QWidget):
                     self.setLowValue(self._minimum if self._lowValue + deltaValue > self._lowValue else self._lowValue + deltaValue) # Check for underflow
                     self.setHighValue(self._highValue + deltaValue)
                 elif deltaValue > 0:
-                    self.setLowValue(self._lowValue + deltaValue)
+                self.setLowValue(self._lowValue + deltaValue)
                     self.setHighValue(self._maximum if self._highValue + deltaValue < self._highValue else self._highValue + deltaValue) # Check for overflow
 
             self._lastMouseValue = mouseValue
