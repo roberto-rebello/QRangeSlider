@@ -1,5 +1,5 @@
 from PyQt5.QtCore import pyqtSignal, pyqtSlot, QSize
-from PyQt5.QtWidgets import QWidget
+from PyQt5.QtWidgets import QWidget, QSizePolicy
 from PyQt5.QtGui import QPainter, QColorConstants, QPen, QBrush, QColor
 
 class QRangeSlider(QWidget):
@@ -39,6 +39,8 @@ class QRangeSlider(QWidget):
 
         # Value of high handle
         self._highValue = self._maximum
+
+        self.setSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Fixed)
 
     def minimum(self):
         return self._minimum
