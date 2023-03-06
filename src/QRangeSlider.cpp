@@ -8,7 +8,7 @@ QRangeSlider::QRangeSlider(QWidget *parent) : QWidget(parent)
     m_lowValue = m_minimum;
     m_highValue = m_maximum;
 
-    setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
+    setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Fixed);
 }
 
 QRangeSlider::~QRangeSlider()
@@ -218,8 +218,6 @@ void QRangeSlider::paintEvent(QPaintEvent *event)
 
     QPainter painter(this);
     painter.setRenderHint(QPainter::RenderHint::Antialiasing);
-
-    painter.fillRect(0, 0, width(), height(), Qt::GlobalColor::green); // Debug
 
     // Draw background
     painter.setPen(QPen(Qt::GlobalColor::darkGray, 0.8));
