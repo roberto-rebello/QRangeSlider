@@ -25,11 +25,11 @@ class QRangeSlider(QWidget):
     PADDING = 1
 
     # Signals
-    _minimumChange = pyqtSignal(int)
-    _maximumChange = pyqtSignal(int)
-    _lowValueChange = pyqtSignal(int)
-    _highValueChange = pyqtSignal(int)
-    _rangeChange = pyqtSignal(int, int)
+    minimumChange = pyqtSignal(int)
+    maximumChange = pyqtSignal(int)
+    lowValueChange = pyqtSignal(int)
+    highValueChange = pyqtSignal(int)
+    rangeChange = pyqtSignal(int, int)
     
     def __init__(self, parent = None):
         super().__init__(parent)
@@ -58,8 +58,8 @@ class QRangeSlider(QWidget):
                 self.setLowValue(self._minimum)
 
             self.update()
-            self._minimumChange.emit(self._minimum)
-            self._rangeChange.emit(self._minimum, self._maximum)
+            self.minimumChange.emit(self._minimum)
+            self.rangeChange.emit(self._minimum, self._maximum)
 
     def maximum(self):
         return self._maximum
@@ -79,8 +79,8 @@ class QRangeSlider(QWidget):
                 self.setHighValue(self._maximum)
 
             self.update()
-            self._maximumChange.emit(self._maximum)
-            self._rangeChange.emit(self._minimum, self._maximum)
+            self.maximumChange.emit(self._maximum)
+            self.rangeChange.emit(self._minimum, self._maximum)
 
     def lowValue(self):
         return self._lowValue
@@ -97,7 +97,7 @@ class QRangeSlider(QWidget):
                 self.setHighValue(self._lowValue + 1)
 
             self.update()
-            self._lowValueChange.emit(self._lowValue)
+            self.lowValueChange.emit(self._lowValue)
 
     def highValue(self):
         return self._highValue
@@ -114,7 +114,7 @@ class QRangeSlider(QWidget):
                 self.setLowValue(self._lowValue - 1)
 
             self.update()
-            self._highValueChange.emit(self._highValue)
+            self.highValueChange.emit(self._highValue)
 
     def step(self):
         return self._step
