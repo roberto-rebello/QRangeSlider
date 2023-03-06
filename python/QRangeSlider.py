@@ -1,6 +1,6 @@
 from PyQt5.QtCore import pyqtSignal, pyqtSlot, QSize
 from PyQt5.QtWidgets import QWidget
-from PyQt5.QtGui import QPainter, QMouseEvent, QPaintEvent, QColorConstants, QPen, QBrush, QColor
+from PyQt5.QtGui import QPainter, QColorConstants, QPen, QBrush, QColor
 
 class QRangeSlider(QWidget):
 
