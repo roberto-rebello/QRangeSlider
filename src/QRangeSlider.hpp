@@ -1,3 +1,6 @@
+#ifndef Q_RANGE_SLIDER_HPP
+#define Q_RANGE_SLIDER_HPP
+
 #include <QWidget>
 
 class QRangeSlider : public QWidget
@@ -63,3 +66,5 @@ private:
     /* Left and Right padding in pixels */
     static constexpr unsigned int PADDING = 1;
 };
+
+#endif // Q_RANGE_SLIDER_HPP
