@@ -161,6 +161,14 @@ QSize QRangeSlider::minimumSizeHint() const
     return QSize(2 * HANDLE_SIZE + 2 * PADDING, 2 * HANDLE_SIZE);
 }
 
+//Added orientation to support the promote option of a Horizontal Slider in QT designer 
+void QRangeSlider::setOrientation(Qt::Orientation orientation)
+{
+    if (orientation != Qt::Orientation::Horizontal) {
+        throw std::invalid_argument("Invalid Orientation. Horizontal is the only available orientation.");
+    }
+}
+
 void QRangeSlider::mousePressEvent(QMouseEvent *e)
 {
     if (e->position().y() >= (height() - SLIDER_HEIGHT - HANDLE_SIZE) / 2 && e->position().y() <= (height() - SLIDER_HEIGHT + HANDLE_SIZE) / 2) // Check if event was on slider
@@ -184,12 +192,16 @@ void QRangeSlider::mouseMoveEvent(QMouseEvent *e)
     {
         float mouseX = e->position().x() < 0 ? 0 : e->position().x();
         unsigned int mouseValue = (mouseX / width()) * (m_maximum - m_minimum) + m_minimum;
+        int normalizedHandleSize = (static_cast<float>(HANDLE_SIZE) / width()) * (m_maximum - m_minimum);
 
-        if (m_lastMouseValue >= m_lowValue - 1 && m_lastMouseValue < m_lowValue + 1)
+        int val1 = m_lowValue - normalizedHandleSize;
+        int val2 = m_lowValue + normalizedHandleSize;
+
+        if (m_lastMouseValue >= val1 && m_lastMouseValue < val2)
         {
             setLowValue(mouseValue);
         }
-        else if (m_lastMouseValue >= m_highValue - 1 && m_lastMouseValue < m_highValue + 1)
+        else if (m_lastMouseValue >= m_highValue - normalizedHandleSize && m_lastMouseValue < m_highValue + normalizedHandleSize)
         {
             setHighValue(mouseValue);
         }
