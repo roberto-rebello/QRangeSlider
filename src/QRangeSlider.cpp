@@ -194,10 +194,7 @@ void QRangeSlider::mouseMoveEvent(QMouseEvent *e)
         unsigned int mouseValue = (mouseX / width()) * (m_maximum - m_minimum) + m_minimum;
         int normalizedHandleSize = (static_cast<float>(HANDLE_SIZE) / width()) * (m_maximum - m_minimum);
 
-        int val1 = m_lowValue - normalizedHandleSize;
-        int val2 = m_lowValue + normalizedHandleSize;
-
-        if (m_lastMouseValue >= val1 && m_lastMouseValue < val2)
+        if (m_lastMouseValue >= static_cast<int>(m_lowValue) - normalizedHandleSize && m_lastMouseValue < m_lowValue + normalizedHandleSize)
         {
             setLowValue(mouseValue);
         }
