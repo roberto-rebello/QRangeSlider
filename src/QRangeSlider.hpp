@@ -19,6 +19,7 @@ public:
     void setStep(const unsigned int step);
     QSize sizeHint() const override;
     QSize minimumSizeHint() const override;
+    void setOrientation(Qt::Orientation orientation);
 
 public slots:
     void setMinimum(const unsigned int minimum);
